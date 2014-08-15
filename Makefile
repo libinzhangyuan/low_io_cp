@@ -32,9 +32,11 @@ endif
 
 all : low_io_cp
 	
-low_io_cp : low_io_cp.o
+low_io_cp : main.o low_io_cp.o util.o
 	$(CC) $(LFLAGS) -o $@ $^
 
-low_io_cp.o : low_io_cp.c
-	$(CC) $(CFLAGS) -c $<
+low_io_cp.o : main.c low_io_cp.c util.c
+	$(CC) $(CFLAGS) -c $^
 
+clean :
+	rm *.o && rm low_io_cp
