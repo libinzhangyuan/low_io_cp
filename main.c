@@ -4,6 +4,9 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include <sys/time.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <time.h>
 
 #include "low_io_cp.h"
 #include "util.h"
