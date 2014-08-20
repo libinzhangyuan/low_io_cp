@@ -39,7 +39,6 @@ int main(int argc, char **argv)
     if (fstat(fd_src, &stat_buf) == -1)
       error_exit("Get source file's access mode fail");
 
-
     int fd_target = open(pfile2_name, O_WRONLY | O_CREAT | O_TRUNC, stat_buf.st_mode);
     if (fd_target == -1)
     {
@@ -47,9 +46,9 @@ int main(int argc, char **argv)
     }
 
     const time_t begin_time = time(NULL);
-    do_cp(fd_src, fd_target);
+    do_cp(fd_src, fd_target, &stat_buf);
     const time_t end_time = time(NULL);
-    printf("total seconds of copying file: %ld\n", end_time - begin_time);
+    printf("100%% total seconds of copying file: %ld\n", end_time - begin_time);
 
     // try making owner same as source file.
     if (fchown(fd_target, stat_buf.st_uid, stat_buf.st_gid) == -1)
