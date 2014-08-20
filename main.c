@@ -1,12 +1,13 @@
 #include <stdio.h>
-//#include <sys/types.h>
-//#include <sys/stat.h>
 #include <fcntl.h>
 #include <stdlib.h>
+#include <time.h>
+#include <unistd.h>
+#include <string.h>
+#include <errno.h>
 #include <sys/time.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <time.h>
 
 #include "low_io_cp.h"
 #include "util.h"
@@ -49,5 +50,10 @@ int main(int argc, char **argv)
     do_cp(fd_src, fd_target);
     const time_t end_time = time(NULL);
     printf("total seconds of copying file: %ld\n", end_time - begin_time);
+
+    // try making owner same as source file.
+    if (fchown(fd_target, stat_buf.st_uid, stat_buf.st_gid) == -1)
+      printf("Info: Changing owner to source file's owner failed. Because: %s\n", strerror(errno));
+
     exit(0);
 }
