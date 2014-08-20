@@ -33,7 +33,13 @@ int main(int argc, char **argv)
         error_exit("Can't open source file");
     }
 
-    int fd_target = open(pfile2_name, O_WRONLY | O_CREAT | O_TRUNC, S_IRWXU);
+    // source  file access mode
+    struct stat stat_buf;
+    if (fstat(fd_src, &stat_buf) == -1)
+      error_exit("Get source file's access mode fail");
+
+
+    int fd_target = open(pfile2_name, O_WRONLY | O_CREAT | O_TRUNC, stat_buf.st_mode);
     if (fd_target == -1)
     {
         error_exit("Can't open target file");
