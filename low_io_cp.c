@@ -49,7 +49,7 @@ bool cp_for_time(const int fd_src, const int fd_target, const int msec)
 
 void do_cp(const int fd_src, const int fd_target)
 {
-    int each_cp_time = 500;
+    int each_cp_time = 500 * 0.5;
 
     for(;;)
     {

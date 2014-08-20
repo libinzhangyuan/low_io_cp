@@ -11,3 +11,9 @@ todolist
 5. Add paramers to controll whether close source file when sleepping.
 
 6. Add paramers to controll copying time and sleepping time.
+
+7. Show copy progress.
+
+8. Show error details.
+
+9. Show exception details.
