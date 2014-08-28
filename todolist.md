@@ -12,7 +12,7 @@ todolist
 
 6. Add paramers to controll copying time and sleepping time.
 
-7. Show copy progress.
+7. Show copy progress. -done
 
 8. Show error details. -done
 
